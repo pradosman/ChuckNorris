@@ -15,9 +15,9 @@ import java.util.ArrayList;
 public class Adaptador extends RecyclerView.Adapter<Adaptador.JokeViewHolder> {
 
     //private View.OnClickListener listener;
-    private ArrayList<Joke> datos;
+    private ArrayList<Result> datos;
 
-    public Adaptador(ArrayList<Joke> datos) {
+    public Adaptador(ArrayList<Result> datos) {
         this.datos = datos;
     }
 
@@ -32,7 +32,7 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.JokeViewHolder> {
             tv_name = (TextView)itemView.findViewById(R.id.tv_recycler);
         }
 
-        public void bindJoke(Joke t, int posicion, ArrayList<Joke>datos) {
+        public void bindJoke(Result t, int posicion, ArrayList<Result>datos) {
 
             tv_name.setText(t.getValue());
         }
@@ -57,7 +57,7 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.JokeViewHolder> {
 
     @Override
     public void onBindViewHolder(JokeViewHolder viewHolder, int pos) {
-        Joke item = datos.get(pos);
+        Result item = datos.get(pos);
 
         viewHolder.bindJoke(item, pos, datos);
     }

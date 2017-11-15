@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     //TAB2
     private RecyclerView recyclerView;
-    private ArrayList<Joke> data;
+    private ArrayList<Result> data;
     private Adaptador adapter;
 
     @Override
@@ -120,15 +120,16 @@ public class MainActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         ChuckJokesServices request = retrofit.create(ChuckJokesServices.class);
-        Call<Joke> call = request.getSports();
-        call.enqueue(new Callback<Joke>() {
+        Call<QuerySport> call = request.getSports();
+        call.enqueue(new Callback<QuerySport>() {
             @Override
-            public void onResponse(Call<Joke> call, Response<Joke> response) {
+            public void onResponse(Call<QuerySport> call, Response<QuerySport> response) {
+                /*
                 txt_tab2 = (TextView) findViewById(R.id.tv_tab2);
                 txt_tab2.setText("Hola");
-
-                Joke joke = response.body();
-                data = new ArrayList<>(Arrays.asList(joke));
+                */
+                QuerySport joke = response.body();
+                data = new ArrayList<>(Arrays.asList(joke.getResult()));
                 adapter = new Adaptador(data);
                 recyclerView.setAdapter(adapter);
             }
@@ -136,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             @Override
-            public void onFailure(Call<Joke> call, Throwable t) {
+            public void onFailure(Call<QuerySport> call, Throwable t) {
                 Toast toast1 =
                         Toast.makeText(getApplicationContext(),
                                 "Error", Toast.LENGTH_SHORT);

@@ -12,7 +12,7 @@ public interface ChuckJokesServices {
     Call<Joke> getJoke();
 
     @GET("jokes/search?query=sport")
-    Call<Joke> getSports();
+    Call<QuerySport> getSports();
 }
 
 
