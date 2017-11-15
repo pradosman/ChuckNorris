@@ -127,7 +127,6 @@ public class MainActivity extends AppCompatActivity {
                 txt_tab2 = (TextView) findViewById(R.id.tv_tab2);
                 txt_tab2.setText("Hola");
 
-                int statusCode = response.code();
                 Joke joke = response.body();
                 data = new ArrayList<>(Arrays.asList(joke));
                 adapter = new Adaptador(data);
